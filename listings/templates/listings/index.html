@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %} {% block content %}
+
+{% include 'partials/_search.html' %}
+
+<h1 style="text-align:center; margin-bottom:40px; color: #1a1a1a;">Наши объекты</h1>
+
+<div style="display:flex; flex-wrap:wrap; gap:25px; justify-content:center;">
+    {% if properties %}
+        {% for property in properties %}
+            <div style="width:320px; border:1px solid #eee; border-radius:15px; overflow:hidden; background:white; margin-bottom: 20px; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                
+                {% if property.photo_main %}
+                    <img src="{{ property.photo_main.url }}" style="width:100%; height:210px; object-fit:cover;">
+                {% else %}
+                    <div style="width:100%; height:210px; background:#f0f0f0; display:flex; align-items:center; justify-content:center; color:#aaa;">
+                        Нет фото
+                    </div>
+                {% endif %}
+                
+                <div style="padding:20px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                        <span style="background: #f0f0f0; padding: 4px 10px; border-radius: 6px; font-size: 11px; color: #555; text-transform: uppercase; font-weight: bold; letter-spacing: 0.5px;">
+                            {{ property.get_property_type_display }}
+                        </span>
+                        <span style="font-weight: bold; color: #1a1a1a; font-size: 15px;">
+                            {{ property.rooms }}
+                        </span>
+                    </div>
+
+                    <h3 style="margin:0; font-size:19px; color: #1a1a1a;">{{ property.title }}</h3>
+                    <p style="color:#888; font-size:13px; margin: 6px 0;">📍 {{ property.city }}, {{ property.state }}</p>
+                    
+                    <div style="display: flex; gap: 15px; margin: 15px 0; font-size: 13px; color: #444; border-top: 1px solid #f9f9f9; padding-top: 15px;">
+                        <span title="Площадь">📏 {{ property.sqft }} м²</span>
+                        <span title="Спальни">🛏 {{ property.bedrooms }}</span>
+                        <span title="Санузлы">🛁 {{ property.bathrooms|floatformat:0 }}</span>
+                    </div>
+
+                    <p style="font-weight:bold; color:#c5a059; font-size:22px; margin: 15px 0;">
+                        ${{ property.price|intcomma }}
+                    </p>
+                    
+                    <a href="{% url 'property' property.id %}" style="display:block; text-align:center; padding:12px; background:#1a1a1a; color:white; text-decoration:none; border-radius:8px; font-size:14px; font-weight:bold; transition: 0.3s;">
+                        Подробнее
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div style="text-align:center; width: 100%; padding: 50px;">
+            <p style="color:#888; font-size: 18px;">Объектов не найдено. Попробуйте изменить параметры поиска.</p>
+            <a href="{% url 'index' %}" style="color: #c5a059; text-decoration: none; font-weight: bold;">Сбросить фильтры</a>
+        </div>
+    {% endif %}
+</div>
+
+<hr style="margin:60px 0; border:0; border-top:1px solid #eee;">
+
+<h2 style="text-align:center; margin-bottom: 30px;">Наша команда</h2>
+<div style="display:flex; justify-content:center; gap:40px; flex-wrap:wrap; margin-top:20px; padding-bottom: 50px;">
+    <div style="text-align:center; width:180px;">
+        <img src="https://i.pravatar.cc/150?u=1" style="width:100px; height:100px; border-radius:50%; object-fit:cover; border: 3px solid #f0f0f0;">
+        <h3 style="margin-top:15px; font-size: 18px;">Александр</h3>
+        <p style="color: #888; font-size: 13px;">Ведущий брокер</p>
+    </div>
+    <div style="text-align:center; width:180px;">
+        <img src="https://i.pravatar.cc/150?u=2" style="width:100px; height:100px; border-radius:50%; object-fit:cover; border: 3px solid #f0f0f0;">
+        <h3 style="margin-top:15px; font-size: 18px;">Мария</h3>
+        <p style="color: #888; font-size: 13px;">Специалист по виллам</p>
+    </div>
+</div>
+{% endblock %}

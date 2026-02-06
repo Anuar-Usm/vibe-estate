@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="max-width: 1000px; margin: 0 auto;">
+    <div style="display: flex; flex-wrap: wrap; gap: 40px;">
+        
+        <div style="flex: 2; min-width: 300px;">
+            {% if property.photo_main %}
+                <img src="{{ property.photo_main.url }}" style="width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 15px;">
+            {% endif %}
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px;">
+                {% if property.photo_1 %}
+                    <img src="{{ property.photo_1.url }}" style="width:100%; height:90px; object-fit:cover; border-radius:8px; cursor:pointer; transition: 0.3s;" onclick="window.open(this.src)">
+                {% endif %}
+                {% if property.photo_2 %}
+                    <img src="{{ property.photo_2.url }}" style="width:100%; height:90px; object-fit:cover; border-radius:8px; cursor:pointer;" onclick="window.open(this.src)">
+                {% endif %}
+                {% if property.photo_3 %}
+                    <img src="{{ property.photo_3.url }}" style="width:100%; height:90px; object-fit:cover; border-radius:8px; cursor:pointer;" onclick="window.open(this.src)">
+                {% endif %}
+                {% if property.photo_4 %}
+                    <img src="{{ property.photo_4.url }}" style="width:100%; height:90px; object-fit:cover; border-radius:8px; cursor:pointer;" onclick="window.open(this.src)">
+                {% endif %}
+                {% if property.photo_5 %}
+                    <img src="{{ property.photo_5.url }}" style="width:100%; height:90px; object-fit:cover; border-radius:8px; cursor:pointer;" onclick="window.open(this.src)">
+                {% endif %}
+            </div>
+        </div>
+
+        <div style="flex: 1; min-width: 300px;">
+            <span style="background: #c5a059; color: white; padding: 5px 12px; border-radius: 50px; font-size: 12px; font-weight: bold; text-transform: uppercase;">
+                {{ property.get_property_type_display }}
+            </span>
+            
+            <h1 style="margin: 15px 0 5px 0; color: #1a1a1a;">{{ property.title }}</h1>
+            <p style="color: #666; font-size: 16px; margin-bottom: 20px;">📍 {{ property.city }}, {{ property.state }}</p>
+            
+            <p style="font-size: 32px; color: #1a1a1a; font-weight: bold; margin: 10px 0;">${{ property.price }}</p>
+            
+            <div style="background: #f9f9f9; padding: 25px; border-radius: 15px; margin: 25px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div>
+                    <p style="color: #888; margin: 0; font-size: 11px; text-transform: uppercase;">Планировка</p>
+                    <p style="margin: 5px 0 0 0; font-weight: bold;">{{ property.rooms }}</p>
+                </div>
+                <div>
+                    <p style="color: #888; margin: 0; font-size: 11px; text-transform: uppercase;">Площадь</p>
+                    <p style="margin: 5px 0 0 0; font-weight: bold;">{{ property.sqft }} м²</p>
+                </div>
+                <div>
+                    <p style="color: #888; margin: 0; font-size: 11px; text-transform: uppercase;">Спальни</p>
+                    <p style="margin: 5px 0 0 0; font-weight: bold;">{{ property.bedrooms }}</p>
+                </div>
+                <div>
+                    <p style="color: #888; margin: 0; font-size: 11px; text-transform: uppercase;">Санузлы</p>
+                    <p style="margin: 5px 0 0 0; font-weight: bold;">{{ property.bathrooms|floatformat:0 }}</p>
+                </div>
+            </div>
+
+            <h4 style="margin-bottom: 10px;">Описание</h4>
+            <p style="line-height: 1.6; color: #555; font-size: 15px;">{{ property.description }}</p>
+
+            <a href="https://wa.me/905550000000?text=Здравствуйте! Меня интересует объект: {{ property.title }} (ID: {{ property.id }})" 
+               target="_blank"
+               style="display:block; text-align:center; text-decoration:none; width: 100%; padding: 18px; background: #25D366; color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: bold; margin-top: 30px; transition: 0.3s; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);">
+                Связаться в WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <div style="margin-top: 50px; padding-bottom: 50px;">
+        <a href="{% url 'index' %}" style="color: #888; text-decoration: none; font-size: 14px;">← Вернуться в каталог</a>
+    </div>
+</div>
+{% endblock %}

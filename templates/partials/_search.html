@@ -1,0 +1,42 @@
+<section style="background: #1a1a1a; padding: 30px 0; margin-bottom: 40px; border-radius: 0 0 20px 20px;">
+  <div style="max-width: 1100px; margin: 0 auto; padding: 0 20px;">
+    <form action="{% url 'index' %}" method="GET" style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;">
+      
+      <div style="flex: 1; min-width: 150px;">
+        <select name="city" style="width: 100%; padding: 12px; border-radius: 8px; border: none;">
+          <option selected="true" disabled="disabled">Город (Все)</option>
+          <option value="Alanya">Аланья</option>
+          <option value="Antalya">Анталья</option>
+          <option value="Istanbul">Стамбул</option>
+        </select>
+      </div>
+
+      <div style="flex: 1; min-width: 150px;">
+        <select name="property_type" style="width: 100%; padding: 12px; border-radius: 8px; border: none;">
+          <option selected="true" disabled="disabled">Тип жилья</option>
+          <option value="Apartment">Квартира</option>
+          <option value="Villa">Вилла</option>
+          <option value="Penthouse">Пентхаус</option>
+        </select>
+      </div>
+
+      <div style="flex: 1; min-width: 100px;">
+        <select name="rooms" style="width: 100%; padding: 12px; border-radius: 8px; border: none;">
+          <option selected="true" disabled="disabled">Спальни</option>
+          <option value="1+1">1+1</option>
+          <option value="2+1">2+1</option>
+          <option value="3+1">3+1</option>
+        </select>
+      </div>
+
+      <div style="flex: 1; min-width: 150px;">
+        <input type="number" name="price" placeholder="Цена до ($)" style="width: 100%; padding: 12px; border-radius: 8px; border: none;">
+      </div>
+
+      <button type="submit" style="background: #c5a059; color: white; border: none; padding: 12px 30px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s;">
+        Найти
+      </button>
+
+    </form>
+  </div>
+</section>

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="max-width: 800px; margin: 0 auto; padding: 40px 20px; text-align: center;">
+    <h1 style="font-size: 36px; color: #1a1a1a; margin-bottom: 20px;">О компании VIBE <span style="color:#c5a059;">ESTATE</span></h1>
+    
+    <p style="font-size: 18px; line-height: 1.8; color: #555; margin-bottom: 40px;">
+        Мы — команда профессионалов, влюбленных в недвижимость Турции. Наша миссия — помочь вам найти не просто квадратные метры, а место для жизни, которое будет вдохновлять каждый день. Мы специализируемся на объектах в Аланье и Анталье, обеспечивая полную юридическую чистоту и "вайб" комфортной сделки.
+    </p>
+
+    <div style="background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+        <h2 style="margin-bottom: 30px;">Наша команда</h2>
+        <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+            <div style="width: 200px;">
+                <img src="https://i.pravatar.cc/150?u=1" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid #c5a059;">
+                <h3 style="margin: 15px 0 5px 0;">Александр</h3>
+                <p style="color: #888; font-size: 14px;">Основатель агентства</p>
+            </div>
+            <div style="width: 200px;">
+                <img src="https://i.pravatar.cc/150?u=2" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid #c5a059;">
+                <h3 style="margin: 15px 0 5px 0;">Мария</h3>
+                <p style="color: #888; font-size: 14px;">Старший брокер</p>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 50px;">
+        <a href="{% url 'index' %}" style="color: #c5a059; text-decoration: none; font-weight: bold;">← Вернуться в каталог</a>
+    </div>
+</div>
+{% endblock %}
